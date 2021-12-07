@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace ticTacToe
 {
-    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -41,7 +41,7 @@ namespace ticTacToe
 
 
         #region Constructor
-        
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -68,8 +68,9 @@ namespace ticTacToe
 
             //Gets container, all children(buttons) and iterates through them
             //using list fetches every button means we can use a for each
-            Container.Children.Cast<Button>().ToList().ForEach(button => 
-            {   
+            //could this be a method??
+            Container.Children.Cast<Button>().ToList().ForEach(button =>
+            {
                 //clears all text from buttons
                 button.Content = string.Empty;
 
@@ -112,6 +113,39 @@ namespace ticTacToe
 
             //set value to player turn
             mResults[index] = mPlayer1Turn ? MarkType.Cross : MarkType.Nought;
+
+            //Sets the button to the result.
+            button.Content = mPlayer1Turn ? "X" : "O";
+
+            //Change player 2 color
+            if (!mPlayer1Turn)
+                button.Foreground = Brushes.Red;
+
+            //set the turns for
+            //bool operator flips value for player turns
+            mPlayer1Turn ^= true;
+
+            //chack for a winner
+            
+        }
+
+        private void CheckForWinner()
+        {
+           
+            if (mResults[0] != MarkType.Free && (mResults[0] & mResults[1] & mResults[2]) == mResults[0])
+            {
+                //game ends
+                mGameEnded = true;
+
+                //Highlight winning cells
+                Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.LightGreen;
+            }
+
+            if (!mResults.Any(f => f == MarkType.Free))
+            {
+                mGameEnded = true;
+
+            }
         }
     }
 }
