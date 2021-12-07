@@ -12,7 +12,7 @@ namespace ticTacToe
     public enum MarkType
     {
         /// <summary>
-        /// The cell has no been click
+        /// The cell has not been click
         /// </summary>
         Free,
         /// <summary>

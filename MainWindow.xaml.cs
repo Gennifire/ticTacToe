@@ -24,6 +24,7 @@ namespace ticTacToe
         #region Private Members
 
         /// <summary>
+        /// MarkType = variable name;
         /// Holds the current results of the cells in active game
         /// </summary>
         private MarkType[] mResults;
@@ -57,13 +58,16 @@ namespace ticTacToe
             //Create a new blank array of cells
             mResults = new MarkType[9];
 
+            //For new game()
+            //go through each result and explicitly sets each item free
             for (var i = 0; i < mResults.Length; i++)
                 mResults[i] = MarkType.Free;
 
             //makes sure player 1 begins game
             mPlayer1Turn = true;
 
-            //Gets contain, all childre(buttons) and iterates through them
+            //Gets container, all children(buttons) and iterates through them
+            //using list fetches every button means we can use a for each
             Container.Children.Cast<Button>().ToList().ForEach(button => 
             {   
                 //clears all text from buttons
@@ -75,8 +79,10 @@ namespace ticTacToe
                 //defaults forground(mouseover) colour to blue
                 button.Foreground = Brushes.Blue;
             });
-        }
 
+            //make sure game hasn't ended
+            mGameEnded = false;
+        }
 
         /// <summary>
         /// Handles a new button click event
@@ -85,7 +91,27 @@ namespace ticTacToe
         /// <param name="e"></param>
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
+            if (mGameEnded)
+            {
+                NewGame();
+                return;
+            }
 
+            //gets button: sender can only be a button
+            var button = (Button)sender;
+
+            //finds the buttons in the array
+            var column = Grid.GetColumn(button);
+            var row = Grid.GetRow(button);
+
+            var index = column + (row * 3);
+
+            //Dont do anything if there is a value already
+            if (mResults[index] != MarkType.Free)
+                return;
+
+            //set value to player turn
+            mResults[index] = mPlayer1Turn ? MarkType.Cross : MarkType.Nought;
         }
     }
 }
