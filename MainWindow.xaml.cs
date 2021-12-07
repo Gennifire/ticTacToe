@@ -143,7 +143,16 @@ namespace ticTacToe
 
             if (!mResults.Any(f => f == MarkType.Free))
             {
+                //end the game
                 mGameEnded = true;
+
+                //turn all cells orange
+                Container.Children.Cast<Button>().ToList().ForEach(button =>
+                {
+                   
+                    //changes background to orange on no win game
+                    button.Foreground = Brushes.Orange;
+                });
 
             }
         }
