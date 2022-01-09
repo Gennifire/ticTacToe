@@ -13,5 +13,6 @@ Learning WPF with a basic tictactoe game
 
 //sectioned each button
 //
+//look at what you did carefully and try to expand on it in future
 //
-//
+
