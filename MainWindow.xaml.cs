@@ -121,8 +121,8 @@ namespace ticTacToe
             if (!mPlayer1Turn)
                 button.Foreground = Brushes.Red;
 
-            //set the turns for
-            //bool operator flips value for player turns
+            //set the turns for each player
+            //"bool operator" flips value for player turns
             mPlayer1Turn ^= true;
 
             //check for a winner
@@ -131,7 +131,9 @@ namespace ticTacToe
 
         private void CheckForWinner()
         {
-           //if the results match the horizontal win paramter
+           //if the results match the horizontal win parameter
+           //row 0
+           //if the second and last buttons of the row match the fisrt button this row wins
             if (mResults[0] != MarkType.Free && (mResults[0] & mResults[1] & mResults[2]) == mResults[0])
             {
                 //game ends
@@ -140,6 +142,27 @@ namespace ticTacToe
                 //Highlight winning cells
                 Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.LightGreen;
             }
+
+            //row 1
+            if (mResults[3] != MarkType.Free && (mResults[3] & mResults[4] & mResults[5]) == mResults[3])
+            {
+                //game ends
+                mGameEnded = true;
+
+                //Highlight winning cells
+                Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.LightGreen;
+            }
+
+            //row 2
+            if (mResults[6] != MarkType.Free && (mResults[6] & mResults[7] & mResults[8]) == mResults[6])
+            {
+                //game ends
+                mGameEnded = true;
+
+                //Highlight winning cells
+                Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.LightGreen;
+            }
+
 
             //if the results if any are all there but there is no winner
             if (!mResults.Any(f => f == MarkType.Free))
@@ -150,8 +173,7 @@ namespace ticTacToe
                 //turn all cells orange
                 Container.Children.Cast<Button>().ToList().ForEach(button =>
                 {
-                   
-                    //changes background to orange on no win game
+                  //changes results to orange on no win game
                     button.Foreground = Brushes.Orange;
                 });
 
