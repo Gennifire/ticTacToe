@@ -125,13 +125,13 @@ namespace ticTacToe
             //bool operator flips value for player turns
             mPlayer1Turn ^= true;
 
-            //chack for a winner
-            
+            //check for a winner
+            CheckForWinner();
         }
 
         private void CheckForWinner()
         {
-           
+           //if the results match the horizontal win paramter
             if (mResults[0] != MarkType.Free && (mResults[0] & mResults[1] & mResults[2]) == mResults[0])
             {
                 //game ends
@@ -141,6 +141,7 @@ namespace ticTacToe
                 Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.LightGreen;
             }
 
+            //if the results if any are all there but there is no winner
             if (!mResults.Any(f => f == MarkType.Free))
             {
                 //end the game
