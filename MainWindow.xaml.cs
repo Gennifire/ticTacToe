@@ -163,6 +163,18 @@ namespace ticTacToe
                 Button0_2.Background = Button1_2.Background = Button2_2.Background = Brushes.LightGreen;
             }
 
+            //Vertical wins
+
+            //col 0
+            if (mResults[0] != MarkType.Free && (mResults[0] & mResults[3] & mResults[6]) == mResults[0])
+            {
+                //game ends
+                mGameEnded = true;
+
+                //Highlight winning cells
+                Button0_0.Background = Button0_1.Background = Button0_2.Background = Brushes.LightGreen;
+            }
+
 
             //if the results if any are all there but there is no winner
             if (!mResults.Any(f => f == MarkType.Free))
