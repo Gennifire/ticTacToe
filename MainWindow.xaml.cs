@@ -182,7 +182,17 @@ namespace ticTacToe
                 mGameEnded = true;
 
                 //Highlight winning cells
-                Button0_0.Background = Button0_1.Background = Button0_2.Background = Brushes.LightGreen;
+                Button1_0.Background = Button1_1.Background = Button1_2.Background = Brushes.LightGreen;
+            }
+
+            //col 2
+            if (mResults[2] != MarkType.Free && (mResults[2] & mResults[5] & mResults[8]) == mResults[1])
+            {
+                //game ends
+                mGameEnded = true;
+
+                //Highlight winning cells
+                Button2_0.Background = Button2_1.Background = Button2_2.Background = Brushes.LightGreen;
             }
 
 
