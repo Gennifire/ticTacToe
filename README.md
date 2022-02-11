@@ -54,8 +54,8 @@ Classes:
 
 -------------------------------------------------------------------
  - to do:
-    - finish vertical and diagonal wins.
-    -  is there a html, css, js version of this.
+    -  Research different versions/language of this.
     -  Could I develop this for mobile and make a simple app?
+    -  Try to extend progame out further: majong etc.
 
 
