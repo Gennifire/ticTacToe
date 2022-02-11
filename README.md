@@ -57,5 +57,7 @@ Classes:
     -  Research different versions/language of this.
     -  Could I develop this for mobile and make a simple app?
     -  Try to extend progame out further: majong etc.
+    -  finished game should completely change
+    -  add warnings to let users know whose turn it is and who won.
 
 
