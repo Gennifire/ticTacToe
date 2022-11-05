@@ -201,7 +201,7 @@ namespace ticTacToe
             {
                 //end the game
                 mGameEnded = true;
-
+                MessageBox.Show("Ooops! No one won!");
                 //turn all cells orange
                 Container.Children.Cast<Button>().ToList().ForEach(button =>
                 {
